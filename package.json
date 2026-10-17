@@ -1,0 +1,26 @@
+{
+  "name": "compra-direta-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend do desafio técnico de Compra Direta",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "core-js": "3.30.2",
+    "vue": "2.6.14",
+    "vue-router": "3.6.5",
+    "vuetify": "2.6.15",
+    "vuex": "3.6.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-service": "~5.0.8",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.1.1",
+    "vue-template-compiler": "2.6.14"
+  }
+}
