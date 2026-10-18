@@ -46,7 +46,7 @@ export default {
 
 	async listarPropostas({ commit }, id) {
 		const { data } = await PropostaApiClient.listar(id)
-		return data
+		return Array.isArray(data) ? data : (data && data.content ? data.content : [])
 	},
 
 	async listarNotificacoes({ commit }, id) {
