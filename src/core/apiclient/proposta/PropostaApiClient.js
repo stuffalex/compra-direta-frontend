@@ -5,8 +5,19 @@ class PropostaApiClient {
 		return await http.post(`/compras-diretas/${compraDiretaId}/propostas`, proposta)
 	}
 
-	async listar(compraDiretaId) {
-		return await http.get(`/compras-diretas/${compraDiretaId}/propostas`)
+	async listar(compraDiretaId, paramsOrPage = 0, sizeParam = 20) {
+		let page = 0
+		let size = 20
+
+		if (typeof paramsOrPage === 'object' && paramsOrPage !== null) {
+			page = paramsOrPage.page !== undefined ? paramsOrPage.page : 0
+			size = paramsOrPage.size !== undefined ? paramsOrPage.size : 20
+		} else if (typeof paramsOrPage === 'number') {
+			page = paramsOrPage
+			size = sizeParam !== undefined ? sizeParam : 20
+		}
+
+		return await http.get(`/compras-diretas/${compraDiretaId}/propostas`, { params: { page, size } })
 	}
 }
 
