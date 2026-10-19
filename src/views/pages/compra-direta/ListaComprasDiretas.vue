@@ -88,10 +88,10 @@ export default {
 		formatarMoeda,
 		formatarData,
 
-		async carregar() {
+		async carregar(params) {
 			this.carregando = true
 			try {
-				await this.$store.dispatch('compraDireta/listar')
+				await this.$store.dispatch('compraDireta/listar', params)
 			} finally {
 				this.carregando = false
 			}

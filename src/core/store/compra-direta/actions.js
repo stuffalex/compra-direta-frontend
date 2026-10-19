@@ -2,8 +2,8 @@ import CompraDiretaApiClient from '@/core/apiclient/compra-direta/CompraDiretaAp
 import PropostaApiClient from '@/core/apiclient/proposta/PropostaApiClient'
 
 export default {
-	async listar({ commit }) {
-		const { data } = await CompraDiretaApiClient.listar()
+	async listar({ commit }, params = { page: 0, size: 20 }) {
+		const { data } = await CompraDiretaApiClient.listar(params)
 		commit('SET_LISTA', data)
 		return data
 	},
@@ -44,8 +44,10 @@ export default {
 		return data
 	},
 
-	async listarPropostas({ commit }, id) {
-		const { data } = await PropostaApiClient.listar(id)
+	async listarPropostas({ commit }, payload) {
+		const id = typeof payload === 'object' && payload !== null ? payload.id : payload
+		const params = typeof payload === 'object' && payload !== null ? payload : { page: 0, size: 20 }
+		const { data } = await PropostaApiClient.listar(id, params)
 		return Array.isArray(data) ? data : (data && data.content ? data.content : [])
 	},
 
